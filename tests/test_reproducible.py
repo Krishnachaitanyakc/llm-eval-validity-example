@@ -172,7 +172,7 @@ class ReproducibleTest(unittest.TestCase):
             self.assertLessEqual(truth, counts[name]["upper"])
 
     def test_version(self):
-        self.assertEqual(__version__, "1.0.0")
+        self.assertEqual(__version__, "1.0.1")
         self.assertEqual(read(os.path.join(ROOT, "VERSION")).strip(), __version__)
         self.assertIn(f"version: {__version__}",
                       read(os.path.join(ROOT, "CITATION.cff")))

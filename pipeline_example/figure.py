@@ -25,7 +25,7 @@ def draw(res, path):
     plt.rcParams.update({"font.size": 7, "font.family": "DejaVu Sans",
                          "axes.linewidth": 0.6, "svg.hashsalt": "fixed"})
     width_in = WIDTH_MM / 25.4
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(width_in, width_in * 0.8),
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(width_in, width_in * 0.62),
                                    gridspec_kw={"height_ratios": [1.15, 1]})
     xs = list(range(len(STAGE_KEYS)))
     counts = res["checks"]["item14"]["counts"]
@@ -65,11 +65,12 @@ def draw(res, path):
                  color=color, lw=1.0, ms=4, mfc=mfc, mew=0.8, label=label)
     ax2.set_xticks(depths)
     ax2.set_xlabel("Chain depth (steps)")
-    ax2.set_ylabel("Share of items")
-    ax2.set_ylim(0, 1.12)
+    ax2.set_ylabel("Share")
+    ax2.set_ylim(0, 1.45)
+    ax2.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
     ax2.set_title("(b) System Alpha: agreement rises while accuracy falls",
                   loc="left", fontsize=7.5)
-    ax2.legend(frameon=False, fontsize=6, loc="upper center", ncol=2)
+    ax2.legend(frameon=False, fontsize=5.5, loc="upper center", ncol=2, borderaxespad=0.2)
     ax2.grid(axis="y", color="0.9", lw=0.5)
     for ax in (ax1, ax2):
         ax.spines["top"].set_visible(False)

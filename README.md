@@ -1,6 +1,6 @@
 # Worked example: how evaluation errors propagate and how the checks detect them
 
-Version 1.0.0. Supplementary material for the chapter "Validity and
+Version 1.0.1. Supplementary material for the chapter "Validity and
 Reliability of Large Language Model and Agent Evaluation". The example
 simulates a small evaluation end to end, injects faults at several pipeline
 stages, shows how they change the headline numbers and the ranking of
@@ -242,7 +242,7 @@ end check.
 | `results/summary.json` | version, configuration, headline, stage and per run numbers |
 | `results/chapter_table.md` | Table 3 of the chapter |
 | `results/figure_propagation.png` | figure, 117 mm wide at 600 dpi |
-| `VERSION`, `CITATION.cff` | version 1.0.0 and citation metadata |
+| `VERSION`, `CITATION.cff` | version 1.0.1 and citation metadata |
 
 In `corrected_outcomes.csv` and the report, E counts grader errors that were
 rerun; errors that persist after the one rerun are included in U, so
