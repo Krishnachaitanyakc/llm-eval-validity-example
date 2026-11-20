@@ -1,0 +1,4 @@
+system,truth,s1_prompt_bug,s3_fallback,s67_drop_undecided,s7_best_run
+Alpha,0.6358,0.5125,0.4858,0.4953,0.5234
+Beta,0.6750,0.5533,0.2217,0.2238,0.2627
+Gamma,0.5567,0.4517,0.4267,0.5492,0.5792

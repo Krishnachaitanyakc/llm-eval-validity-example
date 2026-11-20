@@ -1,0 +1,512 @@
+{
+  "item10": {
+    "item": 10,
+    "name": "Null control (echo agent)",
+    "statistic": "score of an agent that only echoes the prompt",
+    "threshold": "<= floor 0.0 + margin 0.01, set in advance",
+    "value": 0.125,
+    "value_strict": 0.0,
+    "verdict": "FAIL",
+    "verdict_strict": "PASS"
+  },
+  "item14": {
+    "bootstrap": {
+      "level": 0.95,
+      "pairs": [
+        {
+          "high": 0.0425,
+          "low": -0.026667,
+          "margin": "lower(Beta) - upper(Alpha)",
+          "observed": 0.008333,
+          "pair": [
+            "Alpha",
+            "Beta"
+          ],
+          "resolved": false
+        },
+        {
+          "high": -0.076667,
+          "low": -0.145,
+          "margin": "lower(Alpha) - upper(Gamma)",
+          "observed": -0.110833,
+          "pair": [
+            "Alpha",
+            "Gamma"
+          ],
+          "resolved": false
+        },
+        {
+          "high": -0.043333,
+          "low": -0.11,
+          "margin": "lower(Beta) - upper(Gamma)",
+          "observed": -0.076667,
+          "pair": [
+            "Beta",
+            "Gamma"
+          ],
+          "resolved": false
+        }
+      ],
+      "reps": 10000,
+      "resampled_unit": "item, all runs together",
+      "seed": "rng_for('bootstrap')"
+    },
+    "counts": {
+      "Alpha": {
+        "E": 10,
+        "F": 425,
+        "N": 1200,
+        "P": 744,
+        "U": 31,
+        "lower": 0.62,
+        "upper": 0.645833
+      },
+      "Beta": {
+        "E": 13,
+        "F": 378,
+        "N": 1200,
+        "P": 785,
+        "U": 37,
+        "lower": 0.654167,
+        "upper": 0.685
+      },
+      "Gamma": {
+        "E": 14,
+        "F": 323,
+        "N": 1200,
+        "P": 650,
+        "U": 227,
+        "lower": 0.541667,
+        "upper": 0.730833
+      }
+    },
+    "dominance": [
+      [
+        "Alpha",
+        "Beta",
+        "Beta > Alpha"
+      ],
+      [
+        "Alpha",
+        "Gamma",
+        "not ordered, bounds overlap"
+      ],
+      [
+        "Beta",
+        "Gamma",
+        "not ordered, bounds overlap"
+      ]
+    ],
+    "faulty_lost_share": {
+      "Alpha": 0.025833,
+      "Beta": 0.028333,
+      "Gamma": 0.229167
+    },
+    "faulty_report": "U not reported (undecided runs dropped)",
+    "item": 14,
+    "name": "Undecided outcomes",
+    "rerun_budget": 1,
+    "statistic": "faulty report: whether U is reported, and the lost share per system; corrected report: P, F, U, E counts, lower and upper scores over runs, and a paired bootstrap interval for each dominance margin",
+    "threshold": "P, F, U, E and bounds reported for every system; order only when lower(A) > upper(B), and claim it beyond these items only when the paired interval of the margin excludes zero",
+    "unit": "runs (bounds are over all runs of a system)",
+    "verdict": "FAIL",
+    "verdict_corrected_report": "PASS",
+    "verdict_faulty_report": "FAIL"
+  },
+  "item15": {
+    "every_run_reported": false,
+    "item": 15,
+    "name": "Uncertainty and selection",
+    "per_system": {
+      "Alpha": {
+        "best": 0.523404,
+        "best_minus_mean": 0.028191,
+        "mean": 0.495213
+      },
+      "Beta": {
+        "best": 0.262712,
+        "best_minus_mean": 0.039019,
+        "mean": 0.223693
+      },
+      "Gamma": {
+        "best": 0.579235,
+        "best_minus_mean": 0.03036,
+        "mean": 0.548875
+      }
+    },
+    "statistic": "best run minus mean of runs",
+    "threshold": "every run reported",
+    "value": 0.039019,
+    "verdict": "FAIL"
+  },
+  "item1_corrected": {
+    "g_study": {
+      "R": 5,
+      "g_study_conditions": 4,
+      "g_study_reruns": 5,
+      "ms_e": 0.00078,
+      "ms_m": 0.066532,
+      "ms_mc": 0.0,
+      "n_c": 1,
+      "rho2": 0.955233,
+      "rho2_all_conditions": 0.988419,
+      "var_e": 0.00078,
+      "var_m": 0.003327,
+      "var_mc": 0.0
+    },
+    "item": 1,
+    "mean_scores": {
+      "brief": {
+        "Alpha": 0.62,
+        "Beta": 0.654167,
+        "Gamma": 0.541667
+      },
+      "marker": {
+        "Alpha": 0.62,
+        "Beta": 0.654167,
+        "Gamma": 0.541667
+      },
+      "numbered": {
+        "Alpha": 0.62,
+        "Beta": 0.654167,
+        "Gamma": 0.541667
+      },
+      "plain": {
+        "Alpha": 0.62,
+        "Beta": 0.654167,
+        "Gamma": 0.541667
+      }
+    },
+    "min_tau": 1.0,
+    "name": "Invariance across formats (corrected pipeline)",
+    "rankings": {
+      "brief": [
+        "Beta",
+        "Alpha",
+        "Gamma"
+      ],
+      "marker": [
+        "Beta",
+        "Alpha",
+        "Gamma"
+      ],
+      "numbered": [
+        "Beta",
+        "Alpha",
+        "Gamma"
+      ],
+      "plain": [
+        "Beta",
+        "Alpha",
+        "Gamma"
+      ]
+    },
+    "secondary": "Kendall tau against the main format (three systems: values +-1/3 and +-1 only)",
+    "statistic": "generalizability coefficient E rho^2, equation (5), for the reported design (one format, the runs the headline averages); components from systems by formats with runs as reruns",
+    "taus": {
+      "brief": 1.0,
+      "marker": 1.0,
+      "numbered": 1.0,
+      "plain": 1.0
+    },
+    "threshold": ">= 0.8",
+    "value": 0.955233,
+    "value_all_formats": 0.988419,
+    "verdict": "PASS"
+  },
+  "item1_faulty": {
+    "g_study": {
+      "R": 5,
+      "g_study_conditions": 4,
+      "g_study_reruns": 5,
+      "ms_e": 0.000845,
+      "ms_m": 0.15103,
+      "ms_mc": 0.024677,
+      "n_c": 1,
+      "rho2": 0.561421,
+      "rho2_all_conditions": 0.836611,
+      "var_e": 0.000845,
+      "var_m": 0.006318,
+      "var_mc": 0.004766
+    },
+    "item": 1,
+    "mean_scores": {
+      "brief": {
+        "Alpha": 0.486713,
+        "Beta": 0.341919,
+        "Gamma": 0.548658
+      },
+      "marker": {
+        "Alpha": 0.507219,
+        "Beta": 0.510111,
+        "Gamma": 0.551971
+      },
+      "numbered": {
+        "Alpha": 0.500345,
+        "Beta": 0.442323,
+        "Gamma": 0.546731
+      },
+      "plain": {
+        "Alpha": 0.495213,
+        "Beta": 0.223693,
+        "Gamma": 0.548875
+      }
+    },
+    "min_tau": 0.333333,
+    "name": "Invariance across formats (faulty pipeline)",
+    "rankings": {
+      "brief": [
+        "Gamma",
+        "Alpha",
+        "Beta"
+      ],
+      "marker": [
+        "Gamma",
+        "Beta",
+        "Alpha"
+      ],
+      "numbered": [
+        "Gamma",
+        "Alpha",
+        "Beta"
+      ],
+      "plain": [
+        "Gamma",
+        "Alpha",
+        "Beta"
+      ]
+    },
+    "secondary": "Kendall tau against the main format (three systems: values +-1/3 and +-1 only)",
+    "statistic": "generalizability coefficient E rho^2, equation (5), for the reported design (one format, the runs the headline averages); components from systems by formats with runs as reruns",
+    "taus": {
+      "brief": 1.0,
+      "marker": 0.333333,
+      "numbered": 1.0,
+      "plain": 1.0
+    },
+    "threshold": ">= 0.8",
+    "value": 0.561421,
+    "value_all_formats": 0.836611,
+    "verdict": "FAIL"
+  },
+  "item4": {
+    "extractors": {
+      "permissive": {
+        "accuracy": 0.608333,
+        "claimed_scores": {
+          "Alpha": 0.523404,
+          "Beta": 0.262712,
+          "Gamma": 0.579235
+        },
+        "correct": 73,
+        "error_gap": 0.525,
+        "error_gap_limit": 0.027915,
+        "error_types": {
+          "fallback missed the declared marker 'The answer is'": 23,
+          "fallback read a number from a cut off reply": 1,
+          "fallback turned a non answer into a number": 23
+        },
+        "min_wilson_low": 0.180748,
+        "n": 120,
+        "per_system": {
+          "Alpha": {
+            "accuracy": 0.825,
+            "bound_ok": false,
+            "correct": 33,
+            "error_rate": 0.175,
+            "n": 40,
+            "wilson_high": 0.912546,
+            "wilson_low": 0.6805
+          },
+          "Beta": {
+            "accuracy": 0.3,
+            "bound_ok": false,
+            "correct": 12,
+            "error_rate": 0.7,
+            "n": 40,
+            "wilson_high": 0.4543,
+            "wilson_low": 0.180748
+          },
+          "Gamma": {
+            "accuracy": 0.7,
+            "bound_ok": false,
+            "correct": 28,
+            "error_rate": 0.3,
+            "n": 40,
+            "wilson_high": 0.819252,
+            "wilson_low": 0.5457
+          }
+        },
+        "smallest_claimed_gap": 0.055831,
+        "verdict": "FAIL",
+        "wilson_high": 0.691008,
+        "wilson_low": 0.518938,
+        "worst_system": "Beta"
+      },
+      "strict": {
+        "accuracy": 1.0,
+        "claimed_scores": {
+          "Alpha": 0.62,
+          "Beta": 0.654167,
+          "Gamma": 0.541667
+        },
+        "correct": 120,
+        "error_gap": 0.0,
+        "error_gap_limit": 0.017083,
+        "min_wilson_low": 0.912378,
+        "n": 120,
+        "per_system": {
+          "Alpha": {
+            "accuracy": 1.0,
+            "bound_ok": true,
+            "correct": 40,
+            "error_rate": 0.0,
+            "n": 40,
+            "wilson_high": 1.0,
+            "wilson_low": 0.912378
+          },
+          "Beta": {
+            "accuracy": 1.0,
+            "bound_ok": true,
+            "correct": 40,
+            "error_rate": 0.0,
+            "n": 40,
+            "wilson_high": 1.0,
+            "wilson_low": 0.912378
+          },
+          "Gamma": {
+            "accuracy": 1.0,
+            "bound_ok": true,
+            "correct": 40,
+            "error_rate": 0.0,
+            "n": 40,
+            "wilson_high": 1.0,
+            "wilson_low": 0.912378
+          }
+        },
+        "smallest_claimed_gap": 0.034167,
+        "verdict": "PASS",
+        "wilson_high": 1.0,
+        "wilson_low": 0.968981,
+        "worst_system": "Alpha"
+      }
+    },
+    "item": 4,
+    "name": "Extractor audit on a hand labeled sample",
+    "statistic": "smallest Wilson 95% lower bound of extractor accuracy over systems, and the largest difference in error rates between systems",
+    "threshold": "lower bound >= 0.9 for every system, and error gap < 0.5 x smallest claimed gap (Proposition 2, (7))",
+    "value": 0.180748,
+    "verdict": "FAIL"
+  },
+  "item5": {
+    "corrected": {
+      "counts_reported": true,
+      "per_system": {
+        "Alpha": {
+          "fallback_share": 0.047904,
+          "logged": 1169,
+          "scored_by_fallback": 56,
+          "truncated": 13,
+          "unparseable": 13,
+          "unparseable_share": 0.011121
+        },
+        "Beta": {
+          "fallback_share": 0.611492,
+          "logged": 1166,
+          "scored_by_fallback": 713,
+          "truncated": 31,
+          "unparseable": 31,
+          "unparseable_share": 0.026587
+        },
+        "Gamma": {
+          "fallback_share": 0.054359,
+          "logged": 975,
+          "scored_by_fallback": 53,
+          "truncated": 16,
+          "unparseable": 16,
+          "unparseable_share": 0.01641
+        }
+      },
+      "share_ok": true,
+      "value": 0.026587,
+      "verdict": "PASS",
+      "worst_system": "Beta"
+    },
+    "faulty": {
+      "counts_reported": false,
+      "per_system": {
+        "Alpha": {
+          "fallback_share": 0.244654,
+          "logged": 1169,
+          "scored_by_fallback": 286,
+          "truncated": 12,
+          "unparseable": 249,
+          "unparseable_share": 0.213003
+        },
+        "Beta": {
+          "fallback_share": 0.686106,
+          "logged": 1166,
+          "scored_by_fallback": 800,
+          "truncated": 23,
+          "unparseable": 263,
+          "unparseable_share": 0.225557
+        },
+        "Gamma": {
+          "fallback_share": 0.198919,
+          "logged": 925,
+          "scored_by_fallback": 184,
+          "truncated": 14,
+          "unparseable": 159,
+          "unparseable_share": 0.171892
+        }
+      },
+      "share_ok": false,
+      "value": 0.225557,
+      "verdict": "FAIL",
+      "worst_system": "Beta"
+    },
+    "item": 5,
+    "name": "Truncated and unparseable outputs",
+    "statistic": "largest share of logged outputs with no answer under the declared markers",
+    "threshold": "<= 0.05 for every system, counts reported",
+    "value": 0.225557,
+    "value_corrected": 0.026587,
+    "verdict": "FAIL",
+    "verdict_corrected": "PASS"
+  },
+  "item6": {
+    "item": 6,
+    "name": "Rescoring with an independent strict extractor",
+    "per_system": {
+      "Alpha": {
+        "distance": 0.0,
+        "headline": 0.523404,
+        "rescored_lower": 0.501667,
+        "rescored_upper": 0.5275,
+        "rescored_width": 0.025833,
+        "verdict": "PASS"
+      },
+      "Beta": {
+        "distance": 0.273955,
+        "headline": 0.262712,
+        "rescored_lower": 0.536667,
+        "rescored_upper": 0.5675,
+        "rescored_width": 0.030833,
+        "verdict": "FAIL"
+      },
+      "Gamma": {
+        "distance": 0.0,
+        "headline": 0.579235,
+        "rescored_lower": 0.44,
+        "rescored_upper": 0.670833,
+        "rescored_width": 0.230833,
+        "verdict": "PASS"
+      }
+    },
+    "statistic": "largest distance of a headline from the rescored [lower, upper] interval",
+    "threshold": "<= 0.01",
+    "value": 0.273955,
+    "verdict": "FAIL",
+    "worst_system": "Beta"
+  }
+}
